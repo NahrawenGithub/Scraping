@@ -1,19 +1,12 @@
-import urllib
-import urllib3
+
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.support.ui import Select
-from bs4 import BeautifulSoup as bs
-import os
 import getpass
-import re
-from pynput.keyboard import Key, Controller
 from cv2 import cv2
 import os
 import pytesseract
-import itertools
+
 # simulateur credit
 
 def creditBH(wd, i):
@@ -184,7 +177,6 @@ def main():
     wd = webdriver.Chrome(executable_path = DRIVER_PATH)
     pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
-    time.sleep(5)
     print("Bonjour !   ")
     print("1/crédit aménagement (1ans<Duree<7ans) 	")
     print("2/crédit à la consommation (1ans<Duree<3ans) 	")
