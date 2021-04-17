@@ -6,6 +6,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
+from cv2 import cv2
+import os
+import pytesseract
 from bs4 import BeautifulSoup as bs
 import os
 from selenium.webdriver.support.ui import Select
@@ -50,15 +53,16 @@ def creditImmo(wd):
     Mensualité_Autres_Financements.send_keys(bank_AUTRE)
     bank_duree = getpass.getpass("SVP enter Durée de remboursement (ans) ")
     Durée_de_Remboursement.send_keys(bank_duree)
-    time.sleep(5)
 
     submit =wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[4]/div/div/div/div[2]/div/div/input[7]').click()
     wd.execute_script("arguments[0].click();", submit)
-    time.sleep(5)
-    res = wd.find_elements_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
-    for i in res :
-        print(i.text)
     time.sleep(10)
+    res = wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
+    res.screenshot('C:/Users/NBH/Desktop/img.png')
+    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
+    resultat = pytesseract.image_to_string(img)
+    os.remove('C:/Users/NBH/Desktop/img.png')
+    print(resultat)
     return
 
 def creditAuto(wd):
@@ -108,13 +112,16 @@ def creditAuto(wd):
     Mensualité_Autres_Financements.send_keys(bank_AUTRE)
     bank_duree = getpass.getpass("SVP enter Durée de remboursement (ans) ")
     Durée_de_Remboursement.send_keys(bank_duree)
-    time.sleep(5)
 
     wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[4]/div/div/div/div[2]/div/div/input[7]').click()
-    time.sleep(5)
-    res = wd.find_elements_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
-    for i in res :
-        print(i.text)
+    time.sleep(10)
+    res = wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
+
+    res.screenshot('C:/Users/NBH/Desktop/img.png')
+    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
+    resultat = pytesseract.image_to_string(img)
+    os.remove('C:/Users/NBH/Desktop/img.png')
+    print(resultat)
     time.sleep(10)
     return
 
@@ -155,14 +162,17 @@ def creditVoyage(wd) :
     Mensualité_Autres_Financements.send_keys(bank_AUTRE)
     bank_duree = getpass.getpass("SVP enter Durée de remboursement (ans) ")
     Durée_de_Remboursement.send_keys(bank_duree)
-    time.sleep(5)
 
     wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[4]/div/div/div/div[2]/div/div/input[7]').click()
     # wd.execute_script("arguments[0].click();", submit)
-    time.sleep(5)
-    res = wd.find_elements_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
-    for i in res :
-        print(i.text)
+    time.sleep(10)
+    res = wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
+
+    res.screenshot('C:/Users/NBH/Desktop/img.png')
+    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
+    resultat = pytesseract.image_to_string(img)
+    os.remove('C:/Users/NBH/Desktop/img.png')
+    print(resultat)
     time.sleep(10)
     return
 def creditAutre(wd) :
@@ -170,7 +180,6 @@ def creditAutre(wd) :
     data = wd.find_elements_by_xpath('//*[@id="tabs-1"]/form/div[3]/div')
     for i in data :
         print(i.text)
-    time.sleep(5)
     print("0/ Tamouil Mochtarayet")
     print("1/ Tamouil Dirasset")
     print("2/ Tamouil Khadamet Sehheya")
@@ -201,15 +210,16 @@ def creditAutre(wd) :
     Mensualité_Autres_Financements.send_keys(bank_AUTRE)
     bank_duree = getpass.getpass("SVP enter Durée de remboursement (ans) ")
     Durée_de_Remboursement.send_keys(bank_duree)
-    time.sleep(5)
 
-    b= wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[4]/div/div/div/div[2]/div/div/input[7]').click()
-    time.sleep(5)
-    print("la resultat")
-    res = wd.find_elements_by_class_name("results")
-    print("test")
-    for i in res :
-        print(i.text)
+    wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[4]/div/div/div/div[2]/div/div/input[7]').click()
+    time.sleep(10)
+    res = wd.find_element_by_class_name("results")
+
+    res.screenshot('C:/Users/NBH/Desktop/img.png')
+    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
+    resultat = pytesseract.image_to_string(img)
+    os.remove('C:/Users/NBH/Desktop/img.png')
+    print(resultat)
     time.sleep(10)
     return
 
@@ -220,10 +230,10 @@ def main():
     wd.get('https://www.banquezitouna.com/fr/simulateur')
     time.sleep(5)
     print("Bonjour ! svp choisir un entier  ")
-    print("1/Financement Immobilier (<Duree<) ")
-    print("2/Financement Véhicule (<Duree<) ")
-    print("3/Financement Voyage (<Duree<) ")
-    print("4/ Financement Autres Achats (<Duree<) ")
+    print("1/Financement Immobilier  ")
+    print("2/Financement Véhicule  ")
+    print("3/Financement Voyage  ")
+    print("4/ Financement Autres Achats  ")
     a = int(input())
     if a==1 :
         wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[2]/div/div/div[1]/div/div[1]/div/label').click()

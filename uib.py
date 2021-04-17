@@ -34,14 +34,11 @@ def bankcredits(wd, i, credits):
     bank_duree = getpass.getpass("SVP enter Durée de remboursement (Mois) ")
     duree.send_keys(bank_duree)
     wd.find_element_by_xpath('/html/body/div/div/div[3]/div[1]/div[3]/form/table/tbody/tr[8]/td/input[1]').click()
-    time.sleep(5)
     res = wd.find_element_by_xpath('/html/body/div/div/div[3]/div[1]/div[3]/form/table/tbody/tr[7]/td')
     print("la resultat est :")
 
     print(res.text)
-    # wd.find_element_by_xpath("//button[@type='submit']").click()
-    # time.sleep(5)
-    # time.sleep(5)
+
     return
 
 
@@ -53,13 +50,13 @@ def main():
 
     wd.get('https://www.uib.com.tn/simulateur-de-credit/simulateur/simulateur-de-credit#faqnoanchor')
     time.sleep(5)
-    print("1 Expresso (<Duree<) ")
-    print("2 AMENAGEMENT ET TRAVAUX (<Duree<) ")
-    print("3 MAHLY (<Duree<) ")
-    print("4 RAPID'MAHLY (<Duree<) ")
-    print("5 DARI (<Duree<) ")
-    print("6 OMNIA (<Duree<) ")
-    print("7 AUTO (<Duree<) ")
+    print("1 Expresso  ")
+    print("2 AMENAGEMENT ET TRAVAUX  ")
+    print("3 MAHLY  ")
+    print("4 RAPID'MAHLY  ")
+    print("5 DARI  ")
+    print("6 OMNIA  ")
+    print("7 AUTO ")
     a = int(input("choisir un choix" ))
     if a==1 :
         bankcredits(wd,"1","simulateur-expresso/simulateur-expresso")

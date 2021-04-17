@@ -41,8 +41,6 @@ def credit(wd , i ):
     resultat = pytesseract.image_to_string(img)
     os.remove('C:/Users/NBH/Desktop/img.png')
     print(resultat)
-    time.sleep(10)
-    # time.sleep(5)
     return
 
     # time.sleep(5)

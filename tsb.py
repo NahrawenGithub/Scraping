@@ -36,7 +36,6 @@ def credit(wd):
     mensualite.send_keys(bank_mensualite)
     bank_duree = getpass.getpass("SVp entrer le  Durée (mois) ")
     duree.send_keys(bank_duree)
-    time.sleep(5)
     wd.find_element_by_xpath('/html/body/div[1]/div[2]/div[3]/div/section/div/div[2]/form/div[2]/div[1]/div[2]/button').click()
     time.sleep(10)
     res  = wd.find_element_by_class_name("content-recap")
@@ -45,8 +44,6 @@ def credit(wd):
     resultat = pytesseract.image_to_string(imgtsb)
     os.remove('C:/Users/NBH/Desktop/imgtsb.png')
     print(resultat)
-    time.sleep(5)
-    # time.sleep(5)
     return
 
 
@@ -58,7 +55,6 @@ def main():
     wd = webdriver.Chrome(executable_path = DRIVER_PATH)
     wd.get('https://www.tsb.com.tn/fr/simulateur')
     select = Select(wd.find_element_by_xpath('//*[@id="type_financement"]'))
-    time.sleep(5)
     print("Bonjour !   ")
     print("1/Crédit Allouche (<Duree<) 	")
     print("2/Crédit Aménagement (<Duree<) 	")
@@ -79,7 +75,6 @@ def main():
     print("17/Crédit Silhouette	(<Duree<) ")
     print("18/Crédit SMARTPHONE	(<Duree<) ")
     a = int (input("Choisissez le type de financement (<Duree<) "))
-    time.sleep(5)
     if a == 1 :
         select.select_by_index(1)
         credit(wd )

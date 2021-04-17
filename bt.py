@@ -17,22 +17,18 @@ def bankcredits(wd):
     duree = wd.find_element_by_xpath('/html/body/div[10]/div[1]/div[1]/div/article/div/div[4]/span[2]/input')
     interet = wd.find_element_by_xpath('/html/body/div[10]/div[1]/div[1]/div/article/div/div[5]/span[2]/input')
     # Clear the fields
+    montant.send_keys(Keys.CONTROL + "a")
     montant.clear()
     interet.clear()
     duree.clear()
     # Ask user for the information
-    bank_montant = getpass.getpass("SVp entrer le  Montant du prêt souhaité (FCFA)")
+    bank_montant = getpass.getpass("SVp entrer le  Montant du prêt souhaité (DT)")
     montant.send_keys(bank_montant)
-    bank_duree = getpass.getpass("SVP enter Durée de remboursement (Mois) (<Duree<) ")
+    bank_duree = getpass.getpass("SVP enter Durée de remboursement (Mois) (0<Duree<300) ")
     duree.send_keys(bank_duree)
     bank_interet = getpass.getpass("SVP enter Taux d'intérêt (%)* ")
     interet.send_keys(bank_interet)
 
-
-    time.sleep(5)
-    # wd.find_element_by_xpath("//button[@type='submit']").click()
-    # time.sleep(5)
-    # time.sleep(5)
     return
 
 
@@ -42,7 +38,6 @@ def main():
     DRIVER_PATH = 'C:/Users/NBH/Downloads/chromedriver.exe'
     wd = webdriver.Chrome(executable_path = DRIVER_PATH)
     wd.get('http://www.bt.com.tn/simulateur-de-credit')
-    time.sleep(5)
     bankcredits(wd)
     # resultat = wd.find_element_by_name("fieldname1_2")
     pd = wd.find_element_by_xpath('//*[@id="montant-echeance"]')

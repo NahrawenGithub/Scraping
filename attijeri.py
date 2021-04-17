@@ -27,13 +27,10 @@ def credit(wd, i):
     bank_duree = getpass.getpass("SVP enter Durée de remboursement (Mois) ")
     duree.send_keys(bank_duree)
 
-    time.sleep(5)
     wd.find_element_by_xpath('/html/body/div[2]/form[2]/input[2]').click()
     res =wd.find_element_by_xpath('/html/body/div[2]/div[1]')
     print("la resultat est : ")
     print(res.text)
-    time.sleep(5)
-    # time.sleep(5)
     return
 
 
@@ -44,15 +41,12 @@ def main():
     wd = webdriver.Chrome(executable_path = DRIVER_PATH)
     wd.get('http://m.attijaribank.com.tn/Fr/Simulateur_58_216')
     select = Select(wd.find_element_by_xpath('//*[@id="credit"]'))
-    time.sleep(5)
     print("Bonjour !   ")
-    print("1/CREDEX (crédit à la consommation) (<Duree<) 	")
-    print("2/TAHSSIN (crédit aménagement)(<Duree<) 	")
-    print("3/CREDITAU NEUVE (<Duree<) 	")
-    print("4/CREDITAU OCCASION (<Duree<) 	")
-    print("5/Crédits immobiliers MEFTAH	(<Duree<) ")
+    print("1/CREDEX (crédit à la consommation) 3mois < Duree < 36mois ) 	")
+    print("2/TAHSSIN (crédit aménagement)( 1mois < Duree < 60mois ) 	")
+    print("3/CREDITAU NEUVE 1mois < Duree < 60mois )")
+    print("4/CREDITAU OCCASION  1mois < Duree < 60mois )	")
     a = int (input("choisir un type de credit "))
-    time.sleep(5)
     if a == 1 :
         select.select_by_index(1)
         credit(wd, "1")
@@ -65,9 +59,7 @@ def main():
     elif a == 4 :
         select.select_by_index(4)
         credit(wd,"4")
-    elif a == 5 :
-        select.select_by_index(5)
-        credit(wd,"6")
+
 
 
 if __name__ == "__main__":

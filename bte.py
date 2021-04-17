@@ -53,10 +53,6 @@ def bankcredits(wd):
 
     button.click()
 
-    time.sleep(5)
-    # wd.find_element_by_xpath("//button[@type='submit']").click()
-    # time.sleep(5)
-    # time.sleep(5)
     return
 
 
@@ -66,7 +62,6 @@ def main():
     DRIVER_PATH = 'C:/Users/NBH/Downloads/chromedriver.exe'
     wd = webdriver.Chrome(executable_path = DRIVER_PATH)
     wd.get('http://www.bte.com.tn/fr/nos-simulateurs/simulateur-de-credit#')
-    time.sleep(5)
     bankcredits(wd)
     # resultat = wd.find_element_by_name("fieldname1_2")
     tableau = wd.find_elements_by_id('tbcr')

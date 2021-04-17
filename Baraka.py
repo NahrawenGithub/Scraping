@@ -29,19 +29,15 @@ def bankcredits(wd):
     # Ask user for the information
     bank_montant = getpass.getpass("SVp entrer le  Montant du prêt souhaité (FCFA)")
     montant.send_keys(bank_montant)
-    bank_Apport_Propre = getpass.getpass("SVP enter Taux d'intérêt (%)* ")
+    bank_Apport_Propre = getpass.getpass("SVP enter Apport Propre                                         ")
     Apport_Propre.send_keys(bank_Apport_Propre)
-    bank_Revenu_Mensuel_Net = getpass.getpass("SVP enter Durée de remboursement (Mois) ")
+    bank_Revenu_Mensuel_Net = getpass.getpass("SVP enterRevenu Mensuel Net avant impôt                                              ")
     Revenu_Mensuel_Net.send_keys(bank_Revenu_Mensuel_Net)
-    bank_duree = getpass.getpass("SVP enter Durée de remboursement (Mois) ")
+    bank_duree = getpass.getpass("SVP enter Durée de remboursement (ans) ")
     duree.send_keys(bank_duree)
-    bank_Mensualité_pour_Financements = getpass.getpass("SVP enter Durée de remboursement (Mois) ")
+    bank_Mensualité_pour_Financements = getpass.getpass("SVP enter Mensualité pour d’autres Financements ")
     Mensualité_pour_Financements.send_keys(bank_Mensualité_pour_Financements)
-
-    time.sleep(5)
     wd.find_element_by_xpath('//*[@id="calcul_simulateur"]').click()
-    # time.sleep(5)
-    # time.sleep(5)
     return
 
 
@@ -70,7 +66,6 @@ def main():
     print("14/Tahsin Masken Al Baraka ")
     print("15/Tahsin Masken Plus Al Baraka ")
     a = int (input("choisir un type de credit "))
-    time.sleep(5)
     if a == 1 :
         select.select_by_index(1)
         bankcredits(wd)
