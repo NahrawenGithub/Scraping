@@ -57,13 +57,10 @@ def creditImmo(wd):
     submit =wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[4]/div/div/div/div[2]/div/div/input[7]').click()
     wd.execute_script("arguments[0].click();", submit)
     time.sleep(10)
-    res = wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
-    res.screenshot('C:/Users/NBH/Desktop/img.png')
-    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
-    resultat = pytesseract.image_to_string(img)
-    os.remove('C:/Users/NBH/Desktop/img.png')
-    print(resultat)
-    return
+    res = wd.find_elements_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
+
+    for i in  res :
+        print(i.text)
 
 def creditAuto(wd):
     # find element username and password for inputting login info
@@ -115,15 +112,11 @@ def creditAuto(wd):
 
     wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[4]/div/div/div/div[2]/div/div/input[7]').click()
     time.sleep(10)
-    res = wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
+    res = wd.find_elements_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
 
-    res.screenshot('C:/Users/NBH/Desktop/img.png')
-    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
-    resultat = pytesseract.image_to_string(img)
-    os.remove('C:/Users/NBH/Desktop/img.png')
-    print(resultat)
-    time.sleep(10)
-    return
+
+    for i in  res :
+        print(i.text)
 
 def creditVoyage(wd) :
     # find element username and password for inputting login info
@@ -166,15 +159,10 @@ def creditVoyage(wd) :
     wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[4]/div/div/div/div[2]/div/div/input[7]').click()
     # wd.execute_script("arguments[0].click();", submit)
     time.sleep(10)
-    res = wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
+    res = wd.find_elements_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[5]/div/div[2]/div[1]/div')
 
-    res.screenshot('C:/Users/NBH/Desktop/img.png')
-    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
-    resultat = pytesseract.image_to_string(img)
-    os.remove('C:/Users/NBH/Desktop/img.png')
-    print(resultat)
-    time.sleep(10)
-    return
+    for i in  res :
+        print(i.text)
 def creditAutre(wd) :
     # find element username and password for inputting login info
     data = wd.find_elements_by_xpath('//*[@id="tabs-1"]/form/div[3]/div')
@@ -213,14 +201,9 @@ def creditAutre(wd) :
 
     wd.find_element_by_xpath('/html/body/div[1]/main/div[5]/div/div/div/div/div[1]/div/div[1]/form/div[4]/div/div/div/div[2]/div/div/input[7]').click()
     time.sleep(10)
-    res = wd.find_element_by_class_name("results")
-
-    res.screenshot('C:/Users/NBH/Desktop/img.png')
-    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
-    resultat = pytesseract.image_to_string(img)
-    os.remove('C:/Users/NBH/Desktop/img.png')
-    print(resultat)
-    time.sleep(10)
+    res = wd.find_elements_by_class_name("results")
+    for i in  res :
+        print(i.text)
     return
 
 

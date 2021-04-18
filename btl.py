@@ -33,14 +33,11 @@ def bankcredits(wd, ):
     duree.send_keys(bank_duree)
     wd.find_element_by_xpath('/html/body/div[1]/div[1]/div[5]/div/div/div/main/article/div/div/div/div/div/div/article/form/div[6]/input').click()
     time.sleep(5)
-    res = wd.find_element_by_css_selector('#full-screen-search > div > div.simulateur-result-content')
-    res.screenshot('C:/Users/NBH/Desktop/img.png')
-    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
-    resultat = pytesseract.image_to_string(img)
-    os.remove('C:/Users/NBH/Desktop/img.png')
-    print(resultat)
+    res = wd.find_elements_by_css_selector('#full-screen-search > div > div.simulateur-result-content')
 
-    return
+    for i in  res :
+        print(i.text)
+
 
 
 

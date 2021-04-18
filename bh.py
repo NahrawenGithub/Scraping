@@ -5,7 +5,6 @@ from selenium.webdriver.support.ui import Select
 import getpass
 from cv2 import cv2
 import os
-import pytesseract
 
 # simulateur credit
 
@@ -63,16 +62,13 @@ def creditBH(wd, i):
     bank_duree = getpass.getpass("SVP enter Durée de remboursement (ans) ")
     duree.send_keys(bank_duree)
 
-    time.sleep(5)
     wd.find_element_by_xpath('//*[@id="btn_simulation"]').click()
     time.sleep(7)
-    res =wd.find_element_by_css_selector('#details > div.col-md-12.cadre_sim')
-    res.screenshot('C:/Users/NBH/Desktop/img.png')
-    img = cv2.imread('C:/Users/NBH/Desktop/img.png')
-    resultat = pytesseract.image_to_string(img)
-    os.remove('C:/Users/NBH/Desktop/img.png')
-    print(resultat)
-    time.sleep(10)
+    res =wd.find_elements_by_css_selector('#details > div.col-md-12.cadre_sim')
+
+    for i in  res :
+        print(i.text)
+
     # time.sleep(5)
     return
 
@@ -162,20 +158,17 @@ def creditHabitat(wd) :
         duree.send_keys(bank_duree)
 
         wd.find_element_by_xpath('/html/body/div[2]/div[8]/div/div[1]/div[2]/div/form/div[15]/div/button[1]').click()
-        time.sleep(7)
-        res =wd.find_element_by_css_selector('#details3 > div.col-md-12.cadre_sim')
-        res.screenshot('C:/Users/NBH/Desktop/img.png')
-        img = cv2.imread('C:/Users/NBH/Desktop/img.png')
-        resultat = pytesseract.image_to_string(img)
-        os.remove('C:/Users/NBH/Desktop/img.png')
-        print(resultat)
+        time.sleep(10)
+        res = wd.find_elements_by_css_selector('#details3 > div.col-md-12.cadre_sim')
+        for i in  res :
+            print(i.text)
         return
 
 
 def main():
     DRIVER_PATH = 'C:/Users/NBH/Downloads/chromedriver.exe'
     wd = webdriver.Chrome(executable_path = DRIVER_PATH)
-    pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+    # pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
     print("Bonjour !   ")
     print("1/crédit aménagement (1ans<Duree<7ans) 	")

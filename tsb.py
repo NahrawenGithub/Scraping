@@ -36,15 +36,13 @@ def credit(wd):
     mensualite.send_keys(bank_mensualite)
     bank_duree = getpass.getpass("SVp entrer le  Durée (mois) ")
     duree.send_keys(bank_duree)
-    wd.find_element_by_xpath('/html/body/div[1]/div[2]/div[3]/div/section/div/div[2]/form/div[2]/div[1]/div[2]/button').click()
-    time.sleep(10)
-    res  = wd.find_element_by_class_name("content-recap")
-    res.screenshot('C:/Users/NBH/Desktop/imgtsb.png')
-    imgtsb = cv2.imread('C:/Users/NBH/Desktop/imgtsb.png')
-    resultat = pytesseract.image_to_string(imgtsb)
-    os.remove('C:/Users/NBH/Desktop/imgtsb.png')
-    print(resultat)
-    return
+    calculer = wd.find_element_by_xpath('//*[@id="calcul_simulateur"]')
+    wd.execute_script("arguments[0].click();", calculer)
+
+    time.sleep(5)
+    res  = wd.find_elements_by_class_name("content-recap")
+    for  b in res :
+        print(b.text)
 
 
 
